@@ -46,4 +46,7 @@ channel.queue_bind(exchange='logs',
                    queue=result.method.queue)
 ```
 
+Dúvidas:
+Criou e consumiu as mensagens, mas o comando rabbitmqctl.bat 
+não está funcionando no windows.
 
