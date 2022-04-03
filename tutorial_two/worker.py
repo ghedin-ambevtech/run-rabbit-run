@@ -1,7 +1,7 @@
 import pika, os, sys
 import time
 
-FILA = 'FILA_TESTE'
+FILA = 'task_queue'
 
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
@@ -34,6 +34,3 @@ if __name__ == '__main__':
             sys.exit(0)
         except SystemExit:
             os._exit(0)
-
-    print('Parei no message durability https://www.rabbitmq.com/tutorials/tutorial-two-python.html ')
-    print('duvida do message ack, e sobre como testar ele aqui ')
