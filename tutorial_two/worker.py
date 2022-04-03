@@ -1,7 +1,7 @@
 import pika, os, sys
 import time
 
-FILA = 'task_queue'
+FILA = 'task_queues'
 
 def main():
     connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
@@ -14,6 +14,8 @@ def main():
         time.sleep(body.count(b'.'))
         print('[x] Done')
         channel.basic_ack(delivery_tag=method.delivery_tag)
+
+    channel.basic_qos(prefetch_count=1)
 
     channel.basic_consume(
         queue=FILA,
